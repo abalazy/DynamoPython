@@ -1,0 +1,19 @@
+clr.AddReferenceByName('Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c' )
+from Microsoft.Office.Interop import Excel
+from System.Runtime.InteropServices import Marshal
+
+ex = Excel.ApplicationClass()
+ex.Visible = True
+lst_xls = []
+
+workbook = ex.Workbooks.Open(xlspath)
+ws = workbook.Worksheets[1]
+
+#changing value
+ws.Cells(Row,Column).Value=value
+
+#changing colour
+ws.Cells(Row,Column).Interior.Color = eval("ColorTranslator.ToOle(Color.FromArgb(0,176,240))")
+		
+#changing colour of Range
+ws.Range("A"+Column+":N"+Column).Interior.Color=eval("ColorTranslator.ToOle(Color.FromArgb(155,187,89))")
